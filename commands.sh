@@ -1,3 +1,4 @@
+#!/bin/bash
 tc qdisc add dev s1-eth2 root handle 1: htb default 12
 
 tc class add dev s1-eth2 parent 1: classid 1:1 htb rate 100kbps ceil 100kbps
