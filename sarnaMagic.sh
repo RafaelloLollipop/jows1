@@ -28,7 +28,9 @@ DNLD=10kbit          # DOWNLOAD Limit
 UPLD=10kbit          # UPLOAD Limit
 
 # IP address of the machine we are controlling
-IP=10.0.0.1     # Host IP
+#IP=10.0.0.1     # Host IP
+IP=69.53.224.0     # Netflix IP
+
 
 # Filter options for limiting the intended interface.
 U32="$TC filter add dev $IF protocol ip parent 1:0 prio 1 u32"
@@ -42,8 +44,9 @@ start() {
     $TC qdisc add dev $IF root handle 1: htb default 30
     $TC class add dev $IF parent 1: classid 1:1 htb rate $DNLD
     $TC class add dev $IF parent 1: classid 1:2 htb rate $UPLD
-    $U32 match ip dst $IP/32 flowid 1:1
-    $U32 match ip src $IP/32 flowid 1:2
+#    $U32 match ip dst $IP/32 flowid 1:1
+#    $U32 match ip src $IP/32 flowid 1:2
+    $U32 match ip src $IP/19 flowid 1:2
 
 # The first line creates the root qdisc, and the next two lines
 # create two child qdisc that are to be used to shape download 
