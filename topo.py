@@ -19,14 +19,13 @@ def myNetwork():
     Intf( 'eth2', node=s1 )
 
     info( '*** Add hosts\n')
-    h1 = net.addHost('h1', ip='0.0.0.0')
+    h1 = net.addHost('h1', ip='10.0.0.1')
 
     info( '*** Add links\n')
     net.addLink(h1, s1)
 
     info( '*** Starting network\n')
     net.start()
-    h1.cmdPrint('dhclient '+h1.defaultIntf().name)
     CLI(net)
     net.stop()
 
