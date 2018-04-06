@@ -10,3 +10,11 @@ Then, you can start X11 in the VM console window using
 startx
 sudo apt-get install virtualbox-guest-dkms
 Reboot the VM, log in and run startx, and you should be able to resize the VM console window and desktop.
+
+After it edit /etc/resolv.conf (add for example 8.8.8.8 - google, or 1.1.1.1 - the fastest DNS from cloudflare!)
+You can do it by this simple script:
+
+sudo echo 'namespace 1.1.1.1' >> /etc/resolv.conf
+
+Run net.py to have topology with internet over the all hosts in the system.
+
