@@ -83,7 +83,7 @@ show() {
 
 case "$1" in
 
-  start)
+  limit)
 
     echo -n "Starting bandwidth shaping: "
     start
@@ -114,7 +114,7 @@ case "$1" in
   *)
 
     pwd=$(pwd)
-    echo "Usage: tc.bash {start|stop|restart|show} {ip}"
+    echo "Usage: tc.bash {limit|stop|restart|show} {ip}"
     ;;
 
 esac
