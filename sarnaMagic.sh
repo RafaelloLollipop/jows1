@@ -29,7 +29,7 @@ UPLD=10kbit          # UPLOAD Limit
 
 # IP address of the machine we are controlling
 #IP=10.0.0.1     # Host IP
-IP=69.53.224.0     # Netflix IP
+IP="$2"     # Netflix IP
 
 
 # Filter options for limiting the intended interface.
@@ -114,7 +114,7 @@ case "$1" in
   *)
 
     pwd=$(pwd)
-    echo "Usage: tc.bash {start|stop|restart|show}"
+    echo "Usage: tc.bash {start|stop|restart|show} {ip}"
     ;;
 
 esac
