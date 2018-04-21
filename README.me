@@ -28,27 +28,27 @@ Reboot the VM, log in and run startx, and you should be able to resize the VM co
 10. Install google-chrome 
 sudo apt-get install google-chrome
 
-12. Run nat.py to have topology with internet over the all hosts in the system.
+11. Run nat.py to have topology with internet over the all hosts in the system.
 
 ```cd jows1
 sudo su
 python nat.py```
 
-13. Run console for h1, h2 and s1 in mininet console.
+12. Run console for h1, h2 and s1 in mininet console.
 
 ```xterm h1
 xterm h2
 xterm s1```
 
-15. Run google chrome on h1 (we used no-sandbox mode to have camera)
+13. Run google chrome on h1 (we used no-sandbox mode to have camera)
 google-chrome --no-sandbox
 
-16. Run hangout call with friend
+14. Run hangout call with friend
 
-17. Run google chrome on h2 and run netflix. Using developer tools find netflix ip.
+15. Run google chrome on h2 and run netflix. Using developer tools find netflix ip.
 
-19. Use our script on s1.
+16. Use our script on s1.
 
 sh ipLimit.sh limit <netflixIP>
 
-20. Netflix should be limited, hanghout call should work
+17. Netflix should be limited, hanghout call should work
