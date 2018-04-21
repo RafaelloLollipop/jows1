@@ -19,7 +19,7 @@
 TC=/sbin/tc
 
 # The network interface we're planning on limiting bandwidth.
-IF=s1-eth1             # Interface
+IF=s1-eth2             # Interface
 
 # Download limit (in mega bits)
 DNLD=10kbit          # DOWNLOAD Limit
