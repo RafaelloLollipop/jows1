@@ -1,45 +1,54 @@
-Download VM mininet image from http://mininet.org/download/
-Run using e.g Oracle VM VirtualBox Manager
+1. Download VM mininet image from http://mininet.org/download/
 
+2. Run using e.g Oracle VM VirtualBox Manager
+
+3. Login using login and password: 
+default: mininet/mininet
+
+4. Install gui
+```
 sudo apt-get update
-sudo apt-get install xinit <environment>
-where <environment> is your GUI environment of choice. Some options:
-
-lxde: a reasonably compact and and fast desktop environment
-flwm: a smaller but more primitive desktop environment
-ubuntu-desktop: the full, heavyweight Ubuntu Unity desktop environment
-Then, you can start X11 in the VM console window using
-
-startx
-sudo apt-get install virtualbox-guest-dkms
+sudo apt-get install xinit lxde
+```
+5. Start gui
+```startx```
+6. Install gui helpers:
+```sudo apt-get install virtualbox-guest-dkms```
 Reboot the VM, log in and run startx, and you should be able to resize the VM console window and desktop.
 
-After it edit /etc/resolv.conf (add for example 8.8.8.8 - google, or 1.1.1.1 - the fastest DNS from cloudflare!)
-You can do it by this simple script:
+7. Update DNS
+```sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf```
 
-sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf
+8. Install git
+```sudo apt-get install git```
 
-Run net.py to have topology with internet over the all hosts in the system.
+9. Download project
+```git clone https://github.com/Vallher/jows1.git```
 
-TIPS: 
-s1-eth1 - s1 to h1
-s1-eth2 - s1 to h2
-s1-eth3 - s1 to internet
+10. Install google-chrome 
+sudo apt-get install google-chrome
 
-Commands:
-tc qdisc add dev s1-eth2 root handle 1: htb default 12
+12. Run nat.py to have topology with internet over the all hosts in the system.
 
-tc class add dev s1-eth2 parent 1: classid 1:1 htb rate 100kbps ceil 100kbps
-tc class add dev s1-eth2 parent 1:1 classid 1:10 htb rate 30kbps ceil 100kbps
-tc class add dev s1-eth2 parent 1:1 classid 1:11 htb rate 10kbps ceil 100kbps
-tc class add dev s1-eth2 parent 1:1 classid 1:12 htb rate 60kbps ceil 100kbps
+```cd jows1
+sudo su
+python nat.py```
 
-tc filter add dev s1-eth2 protocol ip parent 1:0 prio 1 u32 match ip src 10.0.0.2 match ip dport 80 0xffff flowied 1:10
-tc filter add dev s1-eth2 protocol ip parent 1:0 prio 1 u32 match ip src 10.0.0.2 match ip dport 25 0xffff flowied 1:11
+13. Run console for h1, h2 and s1 in mininet console.
 
-tc qdisc add dev s1-eth2 parent 1:10 handle 20: pfifo limit 5
-tc qdisc add dev s1-eth2 parent 1:11 handle 30: pfifo limit 5
-tc qdisc add dev s1-eth2 parent 1:12 handle 40: sfq perturb 10
+```xterm h1
+xterm h2
+xterm s1```
 
+15. Run google chrome on h1 (we used no-sandbox mode to have camera)
+google-chrome --no-sandbox
 
+16. Run hangout call with friend
 
+17. Run google chrome on h2 and run netflix. Using developer tools find netflix ip.
+
+19. Use our script on s1.
+
+sh ipLimit.sh limit <netflixIP>
+
+20. Netflix should be limited, hanghout call should work
