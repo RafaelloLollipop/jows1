@@ -1,0 +1,54 @@
+1. Download VM mininet image from http://mininet.org/download/
+
+2. Run using e.g Oracle VM VirtualBox Manager
+
+3. Login using login and password: 
+default: mininet/mininet
+
+4. Install gui
+```
+sudo apt-get update
+sudo apt-get install xinit lxde
+```
+5. Start gui
+```startx```
+6. Install gui helpers:
+```sudo apt-get install virtualbox-guest-dkms```
+Reboot the VM, log in and run startx, and you should be able to resize the VM console window and desktop.
+
+7. Update DNS
+```sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf```
+
+8. Install git
+```sudo apt-get install git```
+
+9. Download project
+```git clone https://github.com/Vallher/jows1.git```
+
+10. Install google-chrome 
+sudo apt-get install google-chrome
+
+11. Run nat.py to have topology with internet over the all hosts in the system.
+
+```cd jows1
+sudo su
+python nat.py```
+
+12. Run console for h1, h2 and s1 in mininet console.
+
+```xterm h1
+xterm h2
+xterm s1```
+
+13. Run google chrome on h1 (we used no-sandbox mode to have camera)
+google-chrome --no-sandbox
+
+14. Run hangout call with friend
+
+15. Run google chrome on h2 and run netflix. Using developer tools find netflix ip.
+
+16. Use our script on s1.
+
+```sh ipLimit.sh limit <netflixIP>```
+
+17. Netflix should be limited, hanghout call should work
